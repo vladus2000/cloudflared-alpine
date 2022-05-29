@@ -8,9 +8,9 @@ ENV STARTUP_CMD="/cloudflared proxy-dns --port 5053 --upstream https://1.1.1.1/d
 RUN \
         /update.sh && \
         apk add --no-cache libc6-compat ca-certificates && \
-	wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz && \
-	tar xvfz cloudflared-stable-linux-amd64.tgz && \
-	rm -f cloudflared-stable-linux-amd64.tgz
+	wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && \
+	mv cloudflared-linux-amd64 cloudflared && \
+	chmod +x cloudflared
 
 USER nobody:users
 
